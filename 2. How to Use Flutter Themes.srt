@@ -1,0 +1,1091 @@
+1
+00:00:00,730 --> 00:00:01,030
+All right.
+
+2
+00:00:01,050 --> 00:00:06,690
+So once you've got the skeleton project checked out from GitHub and you've done all the usual steps
+
+3
+00:00:06,780 --> 00:00:13,160
+of getting the packages and opening it in Android Studio You should see something that looks like this.
+
+4
+00:00:13,290 --> 00:00:19,350
+And we currently only have a single file may not dot and there's only a little bit of starting code
+
+5
+00:00:19,350 --> 00:00:19,780
+here.
+
+6
+00:00:19,800 --> 00:00:29,010
+This time we have our BMI calculator as a stateless widget which will return a material app which has
+
+7
+00:00:29,100 --> 00:00:34,380
+the input page as the homepage and the input page is a state full widget.
+
+8
+00:00:34,410 --> 00:00:40,730
+So things in it can change and can update and inside the state of the input page.
+
+9
+00:00:40,770 --> 00:00:48,180
+We have a scaffold with an app bar that just says BMI calculator some tax Center which says body text
+
+10
+00:00:48,300 --> 00:00:51,400
+and also just a dummy floating action button.
+
+11
+00:00:51,420 --> 00:00:57,670
+And the reason why these things are here is so that I can demonstrate something to you and the thing
+
+12
+00:00:57,670 --> 00:01:02,130
+I want to talk about in this first lesson is a flatter themes.
+
+13
+00:01:02,320 --> 00:01:08,230
+It's simply a way for us to be able to define our custom color palette and our custom styling for the
+
+14
+00:01:08,230 --> 00:01:10,750
+look and feel of our app.
+
+15
+00:01:10,750 --> 00:01:16,360
+So this means that if you're creating app for a brand of your company or for your startup you can keep
+
+16
+00:01:16,360 --> 00:01:22,060
+it consistent across the different screens and be able to define your own custom styling and your own
+
+17
+00:01:22,060 --> 00:01:26,800
+custom colors and keep it consistent across different pages.
+
+18
+00:01:26,990 --> 00:01:31,160
+Now if you're interested in first reading a little bit of background about flatter themes then I'll
+
+19
+00:01:31,160 --> 00:01:34,190
+link to this page in the course resources.
+
+20
+00:01:34,250 --> 00:01:42,320
+And this comes from a section on the flutter dogs called cookbook and cookbooks are basically what they
+
+21
+00:01:42,320 --> 00:01:49,970
+sound like they're essentially a book full of recipes that tell you how to achieve a certain thing.
+
+22
+00:01:49,970 --> 00:01:55,810
+So for example if you want to play sound you first have to do this then step 2 you have to do that.
+
+23
+00:01:55,910 --> 00:02:01,520
+And then finally at the very end once you've completed everything written all the code that is necessary
+
+24
+00:02:01,790 --> 00:02:08,780
+then you should be able to achieve the end goal which is similar to a potato chip recipe now the flutter
+
+25
+00:02:08,780 --> 00:02:14,570
+team have created a whole bunch of recipes in their cookbook and all you have to do is head over to
+
+26
+00:02:14,570 --> 00:02:20,100
+flooded f slash docks slash cookbook and you can see a whole bunch of things that you can do.
+
+27
+00:02:20,150 --> 00:02:22,760
+And there's constantly new additions and updates in here.
+
+28
+00:02:22,880 --> 00:02:27,860
+So it's a really really cool place to check out when you want to do something specific with your custom
+
+29
+00:02:27,860 --> 00:02:28,220
+app.
+
+30
+00:02:29,420 --> 00:02:33,920
+So let's head back to themes and what we're gonna do is we're gonna create an app theme.
+
+31
+00:02:33,920 --> 00:02:39,290
+We're going to be able to share some styling and color across our entire app.
+
+32
+00:02:39,290 --> 00:02:45,920
+So to do this we have to provide a theme data widget to our material app.
+
+33
+00:02:45,920 --> 00:02:52,820
+So when we construct our material app in addition to be able to have a title or home we can also specify
+
+34
+00:02:52,850 --> 00:02:54,150
+a theme.
+
+35
+00:02:54,290 --> 00:02:59,060
+And this is a theme data widget which has a whole bunch of properties.
+
+36
+00:02:59,180 --> 00:03:02,830
+And if you check it out you can see just what those properties are.
+
+37
+00:03:02,840 --> 00:03:09,080
+And as I said there's loads of them for you to go through things such as the app bar theme or the bottom
+
+38
+00:03:09,260 --> 00:03:15,440
+bar color or the brightness button colors whole bunch of things that you can set so that you will be
+
+39
+00:03:15,440 --> 00:03:21,010
+able to have some default colors whenever you create a new button or whenever you create an app.
+
+40
+00:03:21,020 --> 00:03:25,080
+And this is shared across all the pages in your app.
+
+41
+00:03:25,220 --> 00:03:30,920
+Now this is super relevant because in the app that we're making in this module actually has more than
+
+42
+00:03:30,920 --> 00:03:32,900
+one page for the first time.
+
+43
+00:03:32,960 --> 00:03:34,880
+It's got multiple screens.
+
+44
+00:03:34,880 --> 00:03:42,380
+So when we do the hard work in our theme we will be able to use that across our entire app if you go
+
+45
+00:03:42,380 --> 00:03:48,130
+ahead and run the skeleton project as it is as soon as you've checked it out from get hub.
+
+46
+00:03:48,260 --> 00:03:53,580
+You'll be able to see that there is no styling that we've implemented as of yet.
+
+47
+00:03:53,630 --> 00:04:00,140
+So everything that you see on screen including the app bar and the text and also the floating action
+
+48
+00:04:00,140 --> 00:04:08,270
+button they are styled using the default flutter theme and that means the app bar has the material blue
+
+49
+00:04:08,270 --> 00:04:14,860
+color and the text for the app bar is white but the text in the body of the scaffold is black.
+
+50
+00:04:15,050 --> 00:04:21,710
+And then all floating action button is also the same blue color and anything that is inside the floating
+
+51
+00:04:21,710 --> 00:04:25,010
+action button any of its children is usually white.
+
+52
+00:04:25,070 --> 00:04:28,610
+This is the default flutter light theme.
+
+53
+00:04:28,610 --> 00:04:32,620
+And if you want to use this theme then you don't have to do anything at all.
+
+54
+00:04:32,720 --> 00:04:40,160
+You don't have to specify anything for the theme property of the material app but if you wanted to customize
+
+55
+00:04:40,160 --> 00:04:48,860
+the theme for your app then you can simply add a new property code theme and as you can see this expects
+
+56
+00:04:48,920 --> 00:04:56,930
+a widget that is a theme data widget and theme data will be able to define visual properties such as
+
+57
+00:04:56,930 --> 00:05:02,370
+colors fonts and shapes for everything that exists inside this app.
+
+58
+00:05:02,390 --> 00:05:10,820
+So let's add a theme and if you start typing theme you can see that there's a couple of default ones
+
+59
+00:05:10,880 --> 00:05:17,120
+that come prepackaged the like one you won't usually ever have to select because that's the default
+
+60
+00:05:17,120 --> 00:05:22,540
+value anyways for all of your material apps but there's also one that's dark.
+
+61
+00:05:22,550 --> 00:05:30,260
+So if we hit enter and we add the dark theme to our material app and if I hit save we can see what that
+
+62
+00:05:30,260 --> 00:05:31,310
+looks like.
+
+63
+00:05:31,310 --> 00:05:38,660
+So the background becomes dark the app bar gets very dark and the floating action button has this nice
+
+64
+00:05:38,720 --> 00:05:42,550
+accent color of sort of turquoise sea green color.
+
+65
+00:05:43,160 --> 00:05:49,720
+If you wanted this particular theme then it's as easy as changing the theme to the dark theme.
+
+66
+00:05:50,180 --> 00:05:53,540
+But what if you wanted it to be more custom.
+
+67
+00:05:53,540 --> 00:05:58,580
+What if you wanted to be able to define what the background color should be what the app colors should
+
+68
+00:05:58,580 --> 00:06:00,660
+be what the accent tones are.
+
+69
+00:06:00,710 --> 00:06:05,220
+Well then you would have to create your very own theme data widget.
+
+70
+00:06:05,300 --> 00:06:13,150
+So that's what we're going to do right now as I mentioned before the theme data widget has loads of
+
+71
+00:06:13,150 --> 00:06:14,880
+properties that you can change.
+
+72
+00:06:15,040 --> 00:06:20,950
+And it's a good idea to actually have a read of this document just to be able to see what are the all
+
+73
+00:06:20,950 --> 00:06:25,750
+the things that you can change and what each of these properties actually do.
+
+74
+00:06:25,750 --> 00:06:32,410
+So the accent color for example would change the foreground color for widgets such as knobs tags over
+
+75
+00:06:32,410 --> 00:06:37,010
+scroll edge effects and also of course offloading floating action button.
+
+76
+00:06:37,300 --> 00:06:43,060
+And then there's others such as the button color which is the default full color of the material used
+
+77
+00:06:43,060 --> 00:06:45,050
+in raised buttons.
+
+78
+00:06:45,100 --> 00:06:51,190
+So this detailed descriptions of what each of these properties will do when you change them.
+
+79
+00:06:51,190 --> 00:06:54,240
+So have a read of that before you get started.
+
+80
+00:06:54,340 --> 00:06:58,990
+And once you familiar with what are all the different knobs that you can turn then it's much easier
+
+81
+00:06:58,990 --> 00:07:05,590
+to know what you can change and how you can customize your app now in our case the property that I'm
+
+82
+00:07:05,590 --> 00:07:11,680
+going to change and this is probably the most frequently changed property is going to be the primary
+
+83
+00:07:11,680 --> 00:07:12,920
+color.
+
+84
+00:07:12,940 --> 00:07:19,180
+Now the primary color is the color that will be given to the background four major parts of the app
+
+85
+00:07:19,240 --> 00:07:22,330
+such as the toolbars or the tab tabs.
+
+86
+00:07:22,340 --> 00:07:28,080
+But notice this doesn't include the body of the scaffold for example.
+
+87
+00:07:28,300 --> 00:07:35,590
+If we go ahead and change our primary color to a DNA something different from the default say a red
+
+88
+00:07:35,590 --> 00:07:38,410
+color then let's hit save.
+
+89
+00:07:38,470 --> 00:07:41,320
+And you can see that firstly our theme.
+
+90
+00:07:41,320 --> 00:07:48,340
+Defaults to the flutter light theme and the only change that we've made is actually changing the top
+
+91
+00:07:48,430 --> 00:07:53,900
+up bar to have a red background color as the primary color.
+
+92
+00:07:53,980 --> 00:08:00,670
+Now if we had other things in our app such as a tab bar or a bottom up bar then those things will also
+
+93
+00:08:00,670 --> 00:08:03,600
+change to have the same primary color.
+
+94
+00:08:03,610 --> 00:08:07,420
+Now what if we wanted to change the accent tone here.
+
+95
+00:08:07,420 --> 00:08:11,590
+Well we can of course just go in here and change the accent color.
+
+96
+00:08:11,740 --> 00:08:15,390
+Let's change that to a purple for example.
+
+97
+00:08:15,430 --> 00:08:17,400
+See what that looks like.
+
+98
+00:08:17,410 --> 00:08:24,070
+So now all floating action button has changed its full color to the accent color that we've chosen him
+
+99
+00:08:25,250 --> 00:08:31,400
+and you can mess around with this and all of the properties that you see here until you achieve the
+
+100
+00:08:31,460 --> 00:08:38,120
+desired look and feel for your brand or your company or your app and the degree of customization that
+
+101
+00:08:38,120 --> 00:08:40,950
+you can do is really very extensive.
+
+102
+00:08:42,010 --> 00:08:48,880
+So far we've always been using the default material colors which come from the material palette and
+
+103
+00:08:49,150 --> 00:08:49,800
+to use it.
+
+104
+00:08:49,810 --> 00:08:55,720
+We've always tapped into colors and then we've simply selected a particular shade or a particular tone
+
+105
+00:08:56,110 --> 00:09:03,430
+of colors in the palette but what if you wanted to use your very own custom colors because there's a
+
+106
+00:09:03,430 --> 00:09:06,170
+lot more colors than what's in the material palette.
+
+107
+00:09:06,820 --> 00:09:11,310
+Well in that case you might want to start off by getting a hex code.
+
+108
+00:09:11,380 --> 00:09:19,330
+So for example the design that we're replicating here has this nice sort of dark blackish purple color
+
+109
+00:09:19,390 --> 00:09:26,050
+as the background is not exactly black and it's not exactly purple but it's a nice shade in between.
+
+110
+00:09:26,050 --> 00:09:31,860
+Now one of the cool tools that I use very frequently is a free tool called Colors zilla.
+
+111
+00:09:32,140 --> 00:09:40,090
+And it works on both Chrome and Firefox and what it does is it adds a little color dropper into your
+
+112
+00:09:40,090 --> 00:09:41,200
+browser.
+
+113
+00:09:41,200 --> 00:09:45,810
+So that means when you click on it you can pick color from the page.
+
+114
+00:09:45,820 --> 00:09:52,630
+So for example if I wanted to get this shade of yellow from this page and I want to use it in my app
+
+115
+00:09:52,660 --> 00:09:59,500
+or on my Web site then I can simply click on it and it will copy the hex code of that color to my clipboard
+
+116
+00:09:59,800 --> 00:10:01,710
+where I can then implement it.
+
+117
+00:10:01,720 --> 00:10:07,540
+So if you want to install this it's as simple as just clicking on this and installing it to your chrome
+
+118
+00:10:07,630 --> 00:10:09,820
+or to your Firefox.
+
+119
+00:10:09,820 --> 00:10:11,630
+And it's pretty easy to use.
+
+120
+00:10:12,100 --> 00:10:13,390
+Let's put that into action.
+
+121
+00:10:13,390 --> 00:10:18,220
+Let's use our color dropper and we're going to pick the color from the page and I'm going to try and
+
+122
+00:10:18,220 --> 00:10:19,120
+pick the color.
+
+123
+00:10:19,120 --> 00:10:21,820
+That's the background of this app.
+
+124
+00:10:21,820 --> 00:10:24,480
+And that comes out a 0 A something something.
+
+125
+00:10:24,520 --> 00:10:31,460
+And I'm going to paste it into here and change my primary color.
+
+126
+00:10:31,630 --> 00:10:39,550
+Now in order to use something that is not a default material color palette color which we get from here
+
+127
+00:10:40,150 --> 00:10:41,740
+we have to use something else.
+
+128
+00:10:41,740 --> 00:10:46,990
+So if we delete that and we start writing color then you can see there's a whole bunch of different
+
+129
+00:10:46,990 --> 00:10:51,440
+ways that we can create a color to use as our primary color.
+
+130
+00:10:51,550 --> 00:10:57,940
+And the most common one that you'll be using if you're using hex codes is the first one where we simply
+
+131
+00:10:57,940 --> 00:11:02,920
+write the word color and inside the parentheses we add the value.
+
+132
+00:11:02,920 --> 00:11:08,270
+And I'm simply going to paste that hex code that I copied over from earlier on.
+
+133
+00:11:08,290 --> 00:11:17,260
+Now if you have a look at the color class in the flutter dogs you can see that it's expecting a 32 bit
+
+134
+00:11:17,260 --> 00:11:22,270
+color value in the A R G.B. format or does that mean.
+
+135
+00:11:22,300 --> 00:11:27,330
+So A is the alpha or the degree of transparency of the color.
+
+136
+00:11:27,490 --> 00:11:35,470
+So we know that if we were to select a color say this green color then we could go from fully opaque
+
+137
+00:11:35,560 --> 00:11:40,850
+to fully transparent to have as much or as little of the color show up.
+
+138
+00:11:41,180 --> 00:11:47,380
+That's also something we can specify when we're using the color class in most cases you're going to
+
+139
+00:11:47,380 --> 00:11:50,440
+be using a fully opaque color.
+
+140
+00:11:50,440 --> 00:12:00,100
+And the value for fully opaque is 0 x f f and that is the value that you're going to be seeing in a
+
+141
+00:12:00,100 --> 00:12:02,040
+lot of our colors.
+
+142
+00:12:02,050 --> 00:12:10,420
+So the trick is whenever you copy over a hex code it only includes the code for the R so the red and
+
+143
+00:12:10,420 --> 00:12:17,410
+then the G which is the green and then the last two values stand for the B which is the blue.
+
+144
+00:12:17,740 --> 00:12:24,490
+So in all three of these channels red green and blue If we specify a different amount for each of those
+
+145
+00:12:24,490 --> 00:12:28,080
+colors we end up with a specific color.
+
+146
+00:12:28,120 --> 00:12:35,680
+So for example if we had a lot of red but not so much green and a lot of blue we get a purple sort of
+
+147
+00:12:35,680 --> 00:12:45,970
+color and usually colors are represented using the hash notation and we have our hex code here now if
+
+148
+00:12:45,970 --> 00:12:51,940
+you've never worked with hexadecimal color codes before then I'm going to include a link to this stack
+
+149
+00:12:51,940 --> 00:12:59,590
+of flow page which does a really good job of explaining how you can use hexadecimal to represent different
+
+150
+00:12:59,590 --> 00:13:00,550
+values.
+
+151
+00:13:00,780 --> 00:13:06,280
+And it's a good place to start to understand where all these letters and numbers come from but essentially
+
+152
+00:13:06,310 --> 00:13:14,920
+all that it does is it encode a certain amount of red green and blue and mixing those together creates
+
+153
+00:13:14,980 --> 00:13:19,530
+a specific color whenever we copy over a hex code.
+
+154
+00:13:19,560 --> 00:13:21,000
+It usually looks like this.
+
+155
+00:13:21,120 --> 00:13:27,780
+It has six values and it's preceded by a hash tag or a pound sign.
+
+156
+00:13:27,780 --> 00:13:32,120
+Now in order to use it in dark the easiest way is to simply paste in the tax code.
+
+157
+00:13:32,220 --> 00:13:43,410
+Delete the LB line and add the zero x f f and this will make our color be a opaque color and the remaining
+
+158
+00:13:43,410 --> 00:13:49,220
+six characters we're gonna leave as it is because they encode the actual hues of the color.
+
+159
+00:13:49,230 --> 00:13:54,960
+Now if we go ahead and hit save let's check out what our app looks like.
+
+160
+00:13:54,960 --> 00:14:01,980
+So you can see the app bar which is determined by the primary color has now changed to the exact same
+
+161
+00:14:01,980 --> 00:14:05,310
+color as what we saw in the dribbled design.
+
+162
+00:14:06,060 --> 00:14:13,020
+So what if we wanted to change the background color of the body of our scaffold as well.
+
+163
+00:14:13,020 --> 00:14:14,150
+Well here's a challenge.
+
+164
+00:14:14,190 --> 00:14:20,820
+Try and see if you can work it out using the documentation on the theme data class looking through the
+
+165
+00:14:20,820 --> 00:14:26,560
+properties that we can change and trying to figure out which one might affect the background here.
+
+166
+00:14:29,110 --> 00:14:34,570
+One of the easiest ways to troll through documentation is sometimes just to use command f or control
+
+167
+00:14:34,570 --> 00:14:37,750
+F to find relevant keywords.
+
+168
+00:14:37,750 --> 00:14:41,780
+In our case we want to change the background of our scaffold body.
+
+169
+00:14:41,980 --> 00:14:47,860
+And if I start searching for background it highlights all the places where it appears and you can see
+
+170
+00:14:47,860 --> 00:14:55,180
+that there's the background color property and then there's the dialog background color but there's
+
+171
+00:14:55,270 --> 00:14:57,690
+also the scaffold background color.
+
+172
+00:14:58,210 --> 00:15:03,640
+And this as it explains is the background color for a typical material app.
+
+173
+00:15:03,790 --> 00:15:06,680
+And this is exactly what we want to change.
+
+174
+00:15:06,730 --> 00:15:08,560
+Let's add that property in here.
+
+175
+00:15:08,560 --> 00:15:13,550
+So in addition to the primary color we're going to change the scaffold background color and it's gonna
+
+176
+00:15:13,570 --> 00:15:17,800
+be exactly the same as the previous value.
+
+177
+00:15:17,800 --> 00:15:25,270
+So let's hit save and now voila we have a scaffold background changed to that same purplish black ish
+
+178
+00:15:25,270 --> 00:15:32,650
+color but now we have a bit of a problem because our text in the middle which used to be in the middle
+
+179
+00:15:32,650 --> 00:15:35,430
+of the page has now completely disappeared.
+
+180
+00:15:35,650 --> 00:15:42,040
+And the reason is because the text has a default color of black and when black is thanks to black.
+
+181
+00:15:42,040 --> 00:15:43,080
+It's kind of hard to see.
+
+182
+00:15:43,630 --> 00:15:48,720
+So we need to change it to a white color in order to do that.
+
+183
+00:15:48,730 --> 00:15:54,550
+We can't simply just change the tax color in our theme data because there's a lot of different types
+
+184
+00:15:54,550 --> 00:15:58,710
+of text that could change say the body text or the heading text.
+
+185
+00:15:58,810 --> 00:16:05,260
+So the property that we have access to though is something called text theme and this takes a specific
+
+186
+00:16:05,260 --> 00:16:13,030
+widget which is called a text theme widget and we can specify in here the part of the tags that we want
+
+187
+00:16:13,030 --> 00:16:13,530
+to change.
+
+188
+00:16:13,540 --> 00:16:15,910
+Is it the caption Is it the button.
+
+189
+00:16:16,000 --> 00:16:17,500
+Is it the headline.
+
+190
+00:16:17,510 --> 00:16:19,300
+Well in our case it's actually body one.
+
+191
+00:16:19,300 --> 00:16:23,470
+So it's the default textile for our material app body.
+
+192
+00:16:24,010 --> 00:16:31,720
+So let's pick the body one property and this is going to expect a text style similar to how we've been
+
+193
+00:16:31,720 --> 00:16:35,290
+changing the style of our text inside our app.
+
+194
+00:16:35,290 --> 00:16:42,710
+We can also do the same inside our theme so we're gonna change the color to a white color.
+
+195
+00:16:42,890 --> 00:16:50,490
+I'm just gonna use the material colors palette here because it's much easier and then I'm going to hit
+
+196
+00:16:50,500 --> 00:16:51,010
+save.
+
+197
+00:16:51,130 --> 00:16:57,930
+And we should now be able to see are text show up because it's now white and it has contrast.
+
+198
+00:16:58,390 --> 00:17:04,780
+Now the other option if you didn't want to use the colors palette you can also use what we've been doing
+
+199
+00:17:04,780 --> 00:17:11,320
+before which is color and it's a good thing to remember that in order to have a white color or you have
+
+200
+00:17:11,320 --> 00:17:17,410
+to do is just add eight F's so one two three four five six seven eight.
+
+201
+00:17:17,560 --> 00:17:23,170
+And if you hit save it's exactly the same thing as using the colors dot white.
+
+202
+00:17:23,170 --> 00:17:27,240
+So it's your choice whichever you find it easier to read.
+
+203
+00:17:27,550 --> 00:17:34,240
+Now previously we saw that the dark theme pretty much has everything that we would want in our theme
+
+204
+00:17:34,690 --> 00:17:39,150
+because we're kind of also going for a dark background and a dog app.
+
+205
+00:17:39,520 --> 00:17:46,330
+So how can we use everything that's already specified in the dark theme but then update certain parts
+
+206
+00:17:46,450 --> 00:17:53,290
+to our liking such as the specific background color or the specific app bar color.
+
+207
+00:17:53,290 --> 00:17:59,770
+Well there's a really neat trick that you can do which is called copy with.
+
+208
+00:17:59,770 --> 00:18:01,490
+Let me show you what we can do.
+
+209
+00:18:01,510 --> 00:18:08,050
+I'm gonna go ahead and cut out everything that's in our theme data widget and as the theme I'm going
+
+210
+00:18:08,050 --> 00:18:10,460
+to go back to that dark theme.
+
+211
+00:18:10,780 --> 00:18:19,390
+And after we specify the dark theme I'm going to write a dot and I'm going to choose the copy with method
+
+212
+00:18:20,020 --> 00:18:27,120
+and inside here I can specify all the things I actually want to change from the dark theme.
+
+213
+00:18:27,250 --> 00:18:33,550
+So that's going to include are primary color are scaffold background color.
+
+214
+00:18:33,550 --> 00:18:38,500
+I'm going to delete the axon color because I actually quite like the one that you get from the dark
+
+215
+00:18:38,500 --> 00:18:39,180
+theme.
+
+216
+00:18:39,430 --> 00:18:46,210
+And I'm also going to delete everything in our text theme because we know that the dark theme already
+
+217
+00:18:46,210 --> 00:18:48,940
+changes all of the text to white.
+
+218
+00:18:48,940 --> 00:18:54,730
+So this vastly simplifies the code that's in our theme data.
+
+219
+00:18:54,730 --> 00:18:59,040
+And if we hit save you can see that the result looks pretty much the same.
+
+220
+00:18:59,080 --> 00:19:07,870
+Other than the fact that we now have the default dark theme accent turn now even though we can create
+
+221
+00:19:07,930 --> 00:19:16,450
+our theme that is app wide at the material app level by changing the theme property we can also actually
+
+222
+00:19:16,450 --> 00:19:21,210
+have more granular control over the theme of particular widgets.
+
+223
+00:19:21,340 --> 00:19:28,930
+For example if you wanted to change the floating action buttons theme on this petite Sheila Page.
+
+224
+00:19:29,110 --> 00:19:36,810
+Then we can actually specify a custom theme just for this floating action button so we can say this
+
+225
+00:19:36,930 --> 00:19:41,200
+floating action button can be embedded.
+
+226
+00:19:41,250 --> 00:19:47,220
+So we're gonna use our intention actions and we're going to wrap our floating action button inside a
+
+227
+00:19:47,220 --> 00:19:55,590
+new widget and that widget is going to be a theme widget which always has a property of data and this
+
+228
+00:19:55,590 --> 00:19:58,220
+expects some theme data.
+
+229
+00:19:58,260 --> 00:20:06,450
+And here we can change our theme so maybe I want to change it to the light mode where our action button
+
+230
+00:20:06,480 --> 00:20:15,240
+is going to become blue or maybe I want some custom theming where I want to change my accent color to
+
+231
+00:20:15,270 --> 00:20:23,620
+a custom color maybe we can go back to that purple color again so you can see that in this case even
+
+232
+00:20:23,620 --> 00:20:31,720
+though the theme that is app wide is a dark theme with a custom primary color and a custom background
+
+233
+00:20:31,720 --> 00:20:39,400
+color we can actually change any widgets theme just by wrapping it inside a theme widget.
+
+234
+00:20:39,400 --> 00:20:46,000
+And this gives us more granular control on a particular page or for customizing a particular widget
+
+235
+00:20:47,470 --> 00:20:50,860
+but we actually don't need a floating action button in our app.
+
+236
+00:20:50,890 --> 00:20:59,560
+So I'm simply going to delete everything that is in our floating action button property including our
+
+237
+00:20:59,560 --> 00:21:07,480
+theme widget and now we're ready to move on to the next step which is actually creating our design for
+
+238
+00:21:07,480 --> 00:21:08,980
+our calculator.
+
+239
+00:21:08,980 --> 00:21:16,310
+But right before I do that I want to go ahead and separate out my main and my input page.
+
+240
+00:21:16,360 --> 00:21:22,710
+Previously we've always pretty much created everything on one page and it's sort of a mumbo jumbo.
+
+241
+00:21:23,170 --> 00:21:29,170
+But now I want to be able to show you how we can create multiple routes multiple screens and we also
+
+242
+00:21:29,170 --> 00:21:35,860
+want to keep our code a bit more tidy so as our code grows it's going to take up a lot of space in the
+
+243
+00:21:35,860 --> 00:21:36,880
+page.
+
+244
+00:21:36,970 --> 00:21:44,350
+So it's usually a good idea to actually separate out individual components into separate dark files
+
+245
+00:21:44,860 --> 00:21:51,430
+the way that we would do that is we would right click on the live folder and we will create a new dot
+
+246
+00:21:51,430 --> 00:21:58,480
+file and I'm gonna call this input underscore page and then we're going to click okay and that creates
+
+247
+00:21:58,480 --> 00:22:05,620
+our input underscore page dot dot and if it asked you whether if you want to add it to get or not you
+
+248
+00:22:05,620 --> 00:22:07,060
+can click yes or no.
+
+249
+00:22:07,060 --> 00:22:08,750
+In this case it doesn't actually matter.
+
+250
+00:22:09,160 --> 00:22:15,730
+So here's our input page dot dot and I'm going to cut my state full widget and the input page state
+
+251
+00:22:15,730 --> 00:22:20,800
+class out of our main dot dot and I'm going to paste it in here.
+
+252
+00:22:21,670 --> 00:22:27,670
+So the first thing you see is a whole bunch of errors and this might be a little bit familiar because
+
+253
+00:22:27,670 --> 00:22:33,730
+it's very similar to when we open up our brand new skeleton project when it doesn't know what each of
+
+254
+00:22:33,730 --> 00:22:41,830
+these things are in order to solve that or we have to do is import R material dot dot package so that
+
+255
+00:22:41,830 --> 00:22:46,450
+it knows what a state full widget is what a scaffold is and all of that.
+
+256
+00:22:47,020 --> 00:22:50,350
+But now we don't know what the input page is.
+
+257
+00:22:50,350 --> 00:22:54,850
+Well how can we reach this particular page again.
+
+258
+00:22:55,240 --> 00:22:56,710
+The secret is in the imports.
+
+259
+00:22:56,920 --> 00:23:04,180
+So we're going to type a new line of import and we're going to import the input page dot dot into this
+
+260
+00:23:04,180 --> 00:23:12,790
+page so that we can access the input page state for widget and we can create it as the home of our material
+
+261
+00:23:12,790 --> 00:23:14,350
+app.
+
+262
+00:23:14,350 --> 00:23:20,420
+So very often in the wild when you come across flutter apps you'll see it's structured like this.
+
+263
+00:23:20,590 --> 00:23:25,090
+The first main dot dot file usually contains a lot of theming.
+
+264
+00:23:25,090 --> 00:23:26,500
+So what are the cost and funds.
+
+265
+00:23:26,500 --> 00:23:28,240
+What are the custom colors.
+
+266
+00:23:28,270 --> 00:23:31,560
+What is the main app going to be named.
+
+267
+00:23:31,660 --> 00:23:38,770
+But then it's going to direct towards the first screen and then for every subsequent screen there should
+
+268
+00:23:38,770 --> 00:23:44,680
+be a separate dot file and we're going to see that as we create more screens in this current module.
+
+269
+00:23:44,740 --> 00:23:50,830
+But now we've separated our app into two distinct pages and we're already done with our theme for our
+
+270
+00:23:50,830 --> 00:23:51,190
+app.
+
+271
+00:23:51,190 --> 00:23:58,210
+So we can leave this page alone and we can focus on a much shorter and more concise input page.
+
+272
+00:23:58,210 --> 00:24:02,050
+Dot dot file that's where we're going to continue in the next lesson.
+
+273
+00:24:02,050 --> 00:24:05,260
+So for all of that and more I'll see you on the next lesson.
